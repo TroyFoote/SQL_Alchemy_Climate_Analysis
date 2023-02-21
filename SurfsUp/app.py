@@ -119,7 +119,7 @@ def tobs():
     return jsonify(tobs_list)
 
 @app.route("/api/v1.0/<start>")
-def start(specified_start_date):
+def specified_start_date(start):
     """Fetch the TMIN, TMAX and TAVG for all dates greater than or equal to the start date."""
     print("Server received request for start page")
     
@@ -129,17 +129,7 @@ def start(specified_start_date):
     #Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range.
     #For a specified start, calculate TMIN, TAVG, and TMAX for all the dates greater than or equal to the start date.
     
-       # canonicalised = superhero.replace(" ", "").lower()
-    # for character in justice_league_members:
-    #     search_term = character["superhero"].replace(" ", "").lower()
-
-    #     if search_term == canonicalised:
-    #         return jsonify(character)
-
-    # return jsonify({"error": "Character not found."}), 404
-
-
-
+   
     #For a specified start date and end date, calculate TMIN, TAVG, and TMAX for the dates from the start date to the end date, inclusive.
    
 
