@@ -9,8 +9,12 @@ Use Python & SQLAlchemy to produce a basic climate analysis and data exploration
 
 
 **Hawaii_Measurements.csv**
+
 **Hawaii_Stations.csv**
+
 **climate_starter-checkpoint.ipynb**
+
+
 
 #### Analysis
 
