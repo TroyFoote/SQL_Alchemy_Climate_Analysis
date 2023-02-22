@@ -40,8 +40,8 @@ def welcome():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start><br/>"
-        f"/api/v1.0/<start>/<end>"
+        f"/api/v1.0/start<br/>"
+        f"/api/v1.0/start/end"
     )
 
 @app.route("/api/v1.0/precipitation")
@@ -126,15 +126,49 @@ def specified_start_date(start):
     # Create session from python to database
     session = Session(engine)
 
-    #Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range.
-    #For a specified start, calculate TMIN, TAVG, and TMAX for all the dates greater than or equal to the start date.
-    
    
-    #For a specified start date and end date, calculate TMIN, TAVG, and TMAX for the dates from the start date to the end date, inclusive.
-   
+    #For a specified start date, calculate TMIN, TAVG, and TMAX for all the dates greater than or equal to the start date.
+    temp_data = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)
+                      ).filter(Measurement.date >=start).all()   
+    temp_data                       
 
     session.close()
 
+    #Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature
+    temp_data_list = []
+    for min_temp, avg_temp, max_temp in temp_data:
+        temp_data_list.append(min_temp) 
+        temp_data_list.append(avg_temp)
+        temp_data_list.append(max_temp)
+
+    return jsonify(temp_data_list)
+   
+
+@app.route("/api/v1.0/<start>/<end>")
+def specified_start_end_date(start, end):
+    """Fetch the TMIN, TMAX and TAVG for all dates greater than or equal to the start date but less than or equal to the end date."""
+    print("Server received request for start/end page")
+    
+    # Create session from python to database
+    session = Session(engine)
+
+    
+    
+    #For a specified start, calculate TMIN, TAVG, and TMAX for all the dates greater than or equal to the start date.
+    temp_data_range = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)
+                      ).filter(Measurement.date >=start).filter(Measurement.date <=start).all()   
+    temp_data_range                       
+
+    session.close()
+
+    #Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range.
+    temp_data_range_list = []
+    for min_temp2, avg_temp2, max_temp2 in temp_data_range:
+        temp_data_range_list.append(min_temp2) 
+        temp_data_range_list.append(avg_temp2)
+        temp_data_range_list.append(max_temp2)
+
+    return jsonify(temp_data_range_list)
 
 if __name__ == "__main__":
     app.run(debug=True)
