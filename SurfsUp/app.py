@@ -21,16 +21,15 @@ Base.prepare(autoload_with=engine)
 Measurement = Base.classes.measurement
 Station = Base.classes.station
 
-  
 
-
+#################################################
 #Flask set up
+#################################################
 
 #Create app
 app = Flask(__name__)
 
 #Flask routes
-
 @app.route("/")
 def welcome():
     """List all available API routes."""
