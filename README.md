@@ -1,4 +1,5 @@
-# Project Title - Module 10 Challenge - Surf's Up!
+# Project Title - SQL_ALchemy_Climate_Analysis
+Module 10
 
 ## Project Description
 
@@ -7,16 +8,11 @@ Use Python & SQLAlchemy to produce a basic climate analysis and data exploration
 
 ### Requirements
 
-
 *Hawaii_Measurements.csv*
-
 *Hawaii_Stations.csv*
-
 *climate_starter-checkpoint.ipynb*
 
-
-
-### Analysis
+### Data Analysis
 
 **Precipitation Analysis**
 
@@ -74,7 +70,18 @@ For a specified start, calculate TMIN, TAVG, and TMAX for all the dates greater 
 
 For a specified start date and end date, calculate TMIN, TAVG, and TMAX for the dates from the start date to the end date, inclusive.        
 
-        
+ ### Dependencies
+
+* SQL Alchemy
+* Python
+* Pandas
+* Matplotlib
+* Numpy
+* Datetime
+* Flask
+
+### References
+Menne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012: An overview of the Global Historical Climatology Network-Daily Database. Journal of Atmospheric and Oceanic Technology, 29, 897-910, https://doi.org/10.1175/JTECH-D-11-00103.1, measurements converted to metric in Pandas.      
 
 
 
